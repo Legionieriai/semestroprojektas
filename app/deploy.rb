@@ -1,7 +1,7 @@
-set :application, 'mooble'
+set :application, 'lostandfound'
 set :repo_url, '#'
 
-set :deploy_to, '/home/mooble/'
+set :deploy_to, '/home/lostandfound/'
 
 set :branch, 'master'
 set :scm, :archive
