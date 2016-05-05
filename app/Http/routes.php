@@ -32,3 +32,5 @@ Route::get('/box', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+?>
