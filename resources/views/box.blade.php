@@ -132,7 +132,7 @@
                                 document.getElementById("address").value = "Tempkite toliau";
                             }
                         });
-                        
+
 
                         //document.getElementById("address").value = evt[0].latLng.formatted_address;
                         //document.getElementById("address").value = evt[0].geometry.location ; // evt.latLng.lat() evt.latLng.lng()
