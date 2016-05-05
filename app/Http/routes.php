@@ -26,3 +26,9 @@ Route::get('/wind', function () {
 Route::get('/box', function () {
     return view('box');
 });
+
+
+
+Route::group(['middleware' => ['web']], function () {
+    //
+});
