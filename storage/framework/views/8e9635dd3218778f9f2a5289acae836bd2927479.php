@@ -67,7 +67,12 @@
             var comment = document.getElementById('comment').value;
             var email = document.getElementById('email').value;
             var number = document.getElementById('number').value;
-            var type = document.getElementById('type').value;
+            if (document.getElementById('type1').checked) {
+                var type = document.getElementById('type1').value;
+            }
+            if (document.getElementById('type2').checked) {
+                var type = document.getElementById('type2').value;
+            }
 
 
             geocoder.geocode( { 'address': address}, function(results, status) {
@@ -88,7 +93,7 @@
 
                     var contentString =
                             '<h3>'+ type +'</h3>'+
-                            '<div class=""><img align="left" width="90px" src="http://www.rpds.lt/images/pvz.png"></div>'+
+                            '<div class=""><img align="left" width="90px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png">'+
                             '<b>Vieta</b>:'+ address +'<br>'+
                             '<b>Aprašymas</b>: ' + comment +' <br>'+
                             '<b>Elektroninis paštas</b>:' +email + ' <br>' +
@@ -132,7 +137,7 @@
                                 document.getElementById("address").value = "Tempkite toliau";
                             }
                         });
-                        
+
 
                         //document.getElementById("address").value = evt[0].latLng.formatted_address;
                         //document.getElementById("address").value = evt[0].geometry.location ; // evt.latLng.lat() evt.latLng.lng()
@@ -157,6 +162,8 @@
     </script>
 
     <style>
+
+
         /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
@@ -213,49 +220,112 @@
             cursor: pointer;
         }
 
+        .button1 {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .button {
+            display: inline-block;
+            border-radius: 2px;
+            background-color: #4CAF50;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 15px 32px;
+            width: 240px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '«';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: -5px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-left: 17px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            left: 0;
+        }
+
+
+
+
         .modal-header {
             padding: 2px 16px;
             background-color: #5cb85c;
             color: white;
         }
 
-        .modal-body {padding: 2px 16px;}
+        .modal-body {
+            padding: 2px 16px 443px;
+
+
+        }
 
         .modal-footer {
             padding: 2px 16px;
             background-color: #5cb85c;
             color: white;
         }
+
+        .right {
+            position: absolute;
+            right: 100px;
+            width: 300px;
+            padding: 2px;
+        }
+        .left {
+            position: absolute;
+            left: 0px;
+            width: 300px;
+            padding: 10px;
+        }
+
+        .center {
+            margin: auto;
+            width: 80%;
+            padding: 5px;
+        }
+
     </style>
 </head>
 <title>Lost & Found</title>
 <body onload="initialize()">
 
-
-<?php
-//$servername = "localhost";
-//$username = "username";
-//$password = "password";
-//
-//// Create connection
-//$conn = new mysqli($servername, $username, $password);
-//
-//// Check connection
-//if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
-//echo "Connected successfully";
-//?>
-
-
-
-<h1>Geriausias visų laikų projektas!</h1>
-<div id="googleMapp" style="width:500px;height:380px;"></div>
-
+<h2>Lost & Found : Rasti - pamesti daiktai</h2>
 
 
 <!-- Trigger/Open The Modal -->
-<button id="myBtn"   onclick="initialize()">Pridėti pamestą daiktą</button>
+<button id="myBtn" class="button1"  onclick="initialize()">Pridėti pamestą daiktą</button>
+<br>
+
+<div id="googleMapp" class="center" style="width:1000px;height:520px;"></div>
+
+
 
 
 <!-- The Modal -->
@@ -267,20 +337,22 @@
             <h2>Pridėti naują tašką</h2>
         </div>
         <div class="modal-body">
-            <div id="googleMap" style="width:500px;height:380px;"></div>
+           <div class="left" id="googleMap" style="width:500px;height:420px;"></div>
 
-
+            <div class="right">
             <form action="">
-                <input type="radio" name="radiotype" id="type" value="Rastas" checked> Radau
-                <input type="radio" name="radiotype" id="type" value="Pamestas" > Pamečiau<br>
+                <input type="radio" name="radiotype" id="type1" value="Rasta" checked="checked"> Radau
+                <input type="radio" name="radiotype" id="type2" value="Pamesta" > Pamečiau<br>
             </form>
 
-            Vieta: <input id="address" type="textbox" value="Savanorių pr. Kaunas">
-            Komentaras: <input id="comment" type="textbox" value="Pamečiau batą" style="width: 300px;"> <br>
-            El. paštas: <input id="email" type="textbox" value="vardas@pastas.lt" >
-            Telefonas: <input id="number" type="textbox" value="+370..." >
-            <input type="button" id="myBtnn" value="Ieškoti" onclick="codeAddress()">
-            <p><input type="button" id="closeBtn" value="Saugoti"></p>
+                Vieta: <input id="address" type="textbox" placeholder="Savanorių pr. Kaunas"><br>
+                Komentaras: <input id="comment" type="textbox" placeholder="Pamečiau batą"> <br>
+                El. paštas:  <input id="email" type="textbox" placeholder="vardas@pastas.lt" > <br>
+                Telefonas: <input id="number" type="textbox" placeholder="+370..." > <br>
+                <button class="button" id="myBtnn" style="vertical-align:middle" onclick="codeAddress()" ><span>Pažymėti žemėlapyje </span></button>
+                <p><span><input class="button" type="button" style="vertical-align:middle" id="closeBtn" value="Saugoti"></span></p>
+            </div>
+
         </div>
         <div class="modal-footer">
         </div>
@@ -289,6 +361,34 @@
 </div>
 
 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "psw";
+$dbname = "lostandfound";
+
+//// Create connection
+//$conn = new mysqli($servername, $username, $password, $dbname);
+//// Check connection
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//}
+//
+//$sql = "SELECT 1, 2, 3 FROM pirmas";
+//$result = $conn->query($sql);
+//
+//if ($result->num_rows > 0) {
+//    // output data of each row
+//    while($row = $result->fetch_assoc()) {
+//        echo "id: " . $row["1"]. " - Name: " . $row["2"]. " " . $row["3"]. "<br>";
+//    }
+//} else {
+//    echo "0 results";
+//}
+//$conn->close();
+
+
+?>
 
 
 

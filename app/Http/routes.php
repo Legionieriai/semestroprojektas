@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/map', function () {
     return view('map');
 });
@@ -23,14 +19,8 @@ Route::get('/wind', function () {
     return view('welcome');
 });
 
-Route::get('/box', function () {
-    return view('box');
+Route::get('/', function () {
+    return view('index');
 });
 
 
-
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
-?>
