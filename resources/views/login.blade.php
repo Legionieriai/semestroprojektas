@@ -12,7 +12,9 @@
                     <input type="password" name="password">
                 </li>
                 <li>
-                    <input type="submit" value="Login">
+
+                    <input href="{{ route('loginn') }}" type="submit" value="Login">
+
                 </li>
                 <li>
                     <a href="register.php">Register</a>
@@ -20,4 +22,6 @@
             </ul>
         </form>
     </div>
+
+
 </div>
