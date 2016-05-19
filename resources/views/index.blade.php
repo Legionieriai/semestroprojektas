@@ -327,8 +327,6 @@
         }
 
 
-
-
         $(document).ready(function() {
             $('#closeBtn').click(function() {
                 modal.style.display = "none";
