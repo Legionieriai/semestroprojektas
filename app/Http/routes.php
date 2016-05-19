@@ -11,16 +11,33 @@
 |
 */
 
-Route::get('/map', function () {
-    return view('map');
+Route::get('/oldversion', function () {
+    return view('oldversion');
 });
 
-Route::get('/wind', function () {
-    return view('welcome');
+Route::get('/signin', function () {
+    return view('loginwindow');
 });
 
 Route::get('/', function () {
     return view('index');
 });
+
+
+
+Route::get('/test',function(){
+    return view('test');
+});
+
+Route::get('loginn', 'Controller@showloginn');
+
+
+
+Route::get('login', 'Controller@login');
+
+Route::get('addUrl', 'Controller@insertData');
+
+Route::get('getUrl', 'Controller@getData');
+
 
 

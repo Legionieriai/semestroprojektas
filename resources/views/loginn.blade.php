@@ -1,5 +1,11 @@
 <?php
- include 'C:\Users\Tomas\Desktop\Tutorials\Laravel5\resources\views\init.blade.php';
+ //@include ('init');
+
+function sanitize($data)
+{
+    return mysqli_real_escape_string($data);
+}
+
 if(empty($_POST)===false){
     $username = $_POST['username'];
     $password = $_POST['password'];
