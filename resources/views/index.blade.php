@@ -618,7 +618,7 @@
 
                 Vieta: <input id="address" type="textbox" placeholder="Įveskite adresą"><br>
                 Komentaras: <input id="comment" type="textbox" placeholder="Aprašykite daiktą"> <br>
-                El. paštas:  <input id="email" type="textbox" placeholder="įveskite el-paštą" > <br>
+                El-paštas:  <input id="email" type="textbox" placeholder="įveskite el-paštą" > <br>
                 Telefonas: <input id="number" type="textbox" placeholder="įveskite telefono numerį" > <br>
                 <button class="button" id="myBtnn" style="vertical-align:middle" onclick="codeAddress()" ><span>Pažymėti žemėlapyje </span></button>
                 <p><span><input class="button" type="button" style="vertical-align:middle" id="closeBtn" value="Saugoti" ></span></p>
@@ -653,7 +653,7 @@
 
 </div>
 
-<footer>
+<footer style=" color:black; font-weight: bold; padding:15px 0px 0px 0px;">
     &copy; Lost & Found 2016 All rights reserved.
 </footer>
 

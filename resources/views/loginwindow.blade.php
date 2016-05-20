@@ -256,7 +256,7 @@
 
     </div>
 </div>
-<footer>
+<footer style="color:black; font-weight: bold; padding:15px 11px 12px 11px;">
     &copy; Lost & Found 2016 All rights reserved.
 </footer>
 </body>

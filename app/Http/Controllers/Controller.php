@@ -265,7 +265,7 @@ class Controller extends BaseController
                     echo('Prisijungimo vardas užimtas');
 
                 }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emailErr = "Neteisingas el-pašto adresas";
+                    echo("Neteisingas el-pašto adresas");
                 }
 
                 else {

@@ -34,6 +34,7 @@
         var myCenter;
         var xcoord = "";
         var ycoord ="";
+        var picture ="";
         geocoder = new google.maps.Geocoder();
         myCenter=new google.maps.LatLng(55.1721705,23.8955189);
 
@@ -258,11 +259,34 @@
                         position: results[0].geometry.location
 
                     });
-                    marker.setMap(map);
 
+//                    var preview = document.querySelector('img'); //selects the query named img
+//                    var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+//                    var reader  = new FileReader();
+//
+//                    reader.onloadend = function () {
+//                        var srcc = reader.result;
+//                        //document.getElementById("ip").value= reader.result;
+//                    }
+//
+//                    if (file) {
+//                        reader.readAsDataURL(file); //reads the data as a URL
+//                    } else {
+//                        preview.src = "no";
+//                    }
+
+
+                    //preview.src = reader.result;
+
+
+
+
+
+                    marker.setMap(map);
+                    //src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png"
                     var contentString =
                             '<h3>'+ type +'</h3>'+
-                            '<div class=""><img align="left" width="90px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png" >'+
+                            '<div class=""><img align="left" width="90" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png">'+
                             '<b>Vieta </b>:'+ address +'<br>'+
                             '<b>Aprašymas </b>: ' + comment +' <br>'+
                             '<b>El-paštas </b>:' +email + ' <br>' +
@@ -331,6 +355,15 @@
             });
 
 
+        }
+
+        function image(){
+//            picture = document.getElementById('yourImgId');
+//            if(picture && picture.style) {
+//                //picture.style.height = '100px';
+//                picture.style.width = '90px';
+//                document.getElementById('ip').value=picture;
+//            }
         }
 
 
@@ -688,6 +721,7 @@
                 <button class="button" id="myBtnn" style="vertical-align:middle" onclick="codeAddress()" ><span>Pažymėti žemėlapyje </span></button>
                 <p><span><input class="button" type="button" style="vertical-align:middle" id="closeBtn" value="Saugoti" ></span></p>
 
+                <!--<input type="file" id="io"><br>-->
             </div>
 
         </div>
@@ -719,8 +753,7 @@
 
 </div>
 
-
-<footer>
+<footer style="color:black; font-weight: bold; padding:15px 0px 0px 0px;">
     &copy; Lost & Found 2016 All rights reserved.
 </footer>
 
