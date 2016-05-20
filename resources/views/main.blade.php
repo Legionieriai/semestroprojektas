@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,7 +187,6 @@
 
 
 
-
         function initialize() {
             var mapProp = {
                 center:myCenter,
@@ -199,12 +200,17 @@
             setTimeout( function(){resizingMap(map);} , 400);
         }
 
+        function gohome() {
 
-        function gologin() {
-
-            window.location.href = 'signin';
+            window.location.href = 'main';
 
         }
+        function goout() {
+
+            window.location.href = '/';
+
+        }
+
 
         //
         function resizingMap(map) {
@@ -229,19 +235,10 @@
                 var type = document.getElementById('type2').value;
             }
             var picture = "";
-            var preview = document.querySelector('img'); //selects the query named img
-            var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-            var reader  = new FileReader();
 
 
             //src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png"
-            var contentString =
-                    '<h3>'+ type +'</h3>'+
-                    '<div class=""><img align="left" width="90px" src="" >'+
-                    '<b>Vieta </b>:'+ address +'<br>'+
-                    '<b>Aprašymas </b>: ' + comment +' <br>'+
-                    '<b>El-paštas </b>:' +email + ' <br>' +
-                    '<b>Telefonas </b>:' + number + '<br><br></div>';
+
 
 
 
@@ -263,7 +260,13 @@
                     });
                     marker.setMap(map);
 
-
+                    var contentString =
+                            '<h3>'+ type +'</h3>'+
+                            '<div class=""><img align="left" width="90px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png" >'+
+                            '<b>Vieta </b>:'+ address +'<br>'+
+                            '<b>Aprašymas </b>: ' + comment +' <br>'+
+                            '<b>El-paštas </b>:' +email + ' <br>' +
+                            '<b>Telefonas </b>:' + number + '<br><br></div>';
 
 
                     infowindow = new google.maps.InfoWindow({
@@ -331,13 +334,6 @@
         }
 
 
-        function gohome() {
-
-            window.location.href = '/';
-
-        }
-
-
         $(document).ready(function() {
             $('#closeBtn').click(function() {
                 modal.style.display = "none";
@@ -368,7 +364,7 @@
                     },
                     success: function(data) {
                         // do something;
-
+                            gohome();
                         //$('#result').html(data)
                     },
                     error: function() {
@@ -377,6 +373,7 @@
 
                 });
             });
+
         });
 
 
@@ -448,7 +445,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-
         /* The Close1 Button */
         .close1 {
             color: white;
@@ -463,6 +459,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+
         .button1 {
             background-color: #4CAF50; /* Green */
             border: none;
@@ -472,6 +469,7 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
+            width: 250px;
         }
 
         .button {
@@ -486,7 +484,19 @@
             width: 240px;
             transition: all 0.5s;
             cursor: pointer;
-            margin: 5px;
+        }
+        .buttonn {
+            display: inline-block;
+            border-radius: 2px;
+            background-color: #4CAF50;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 14px;
+            padding: 7px 32px;
+            width: 240px;
+            transition: all 0.5s;
+            cursor: pointer;
         }
 
         .button span {
@@ -554,6 +564,7 @@
             padding: 10px;
             border-radius: 4px;
         }
+        /* Style The Dropdown Button */
         .dropbtn {
             background-color: #4CAF50;
             color: white;
@@ -563,10 +574,54 @@
             cursor: pointer;
             width: 250px;
             position: absolute;
-            right: 10px;
+            right: -500px;
+            top: -32px;
 
 
+        }
 
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 250px;
+            height:40px;
+
+            right: -500px;
+            top: -70px;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1
+
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+            bottom: 100%;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
         }
         .h2 {
             font-family: Copperplate, Copperplate Gothic Light, fantasy;
@@ -584,16 +639,23 @@
 <body background="http://artrebels.com/sites/default/files/things4.jpg">
 <!-- onload="initialize(), initialize_and_load()" -->
 
-<header>
+
     <h2 class="h2"><b>Lost & Found : Rasti - pamesti daiktai</b></h2>
-</header>
 
 
 <!-- Trigger/Open The Modal -->
-<button id="myBtn1" class="button1" onclick="gohome()"  src="">Pagrindinis</button>
-<button id="myBtn" class="button1"  onclick="gologin()">Pridėti pamestą daiktą</button>
-<button id="myBtn22" class="button1"  >Apie projektą</button>
-<button class="dropbtn" onclick="gologin()">Prisijungti</button>
+
+<button id="myBtn11" class="button1" onclick="gohome()"  src="">Pagrindinis</button>
+<button id="myBtn" class="button1"  onclick="initialize()">Pridėti pamestą daiktą</button>
+<button id="myBtn22" class="button1"  src="">Apie projektą</button>
+<div class="dropdown">
+    <button class="dropbtn">Vartotojas</button>
+    <div class="dropdown-content">
+        <a onclick="goout()"><b>Atsijungti</b></a>
+    </div>
+</div>
+
+
 <br>
 
 <div id="googleMapp" class="center" style="width:1000px;height:520px;"></div>
@@ -605,21 +667,24 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">×</span>
-            <h2>Pridėti naują tašką</h2>
+            <h2>Pridėti naują daiktą</h2>
         </div>
         <div class="modal-body">
             <div class="left" id="googleMap" style="width:500px;height:420px;"></div>
 
             <div class="right">
+                <br>
+                <br>
                 <form action="">
-                    <input type="radio" name="radiotype" id="type1" value="Rasta" checked="checked"> Radau
-                    <input type="radio" name="radiotype" id="type2" value="Pamesta" > Pamečiau<br>
+                    <input type="radio"  name="radiotype" id="type1" value="Rasta" checked="checked"> Radau
+                    <input type="radio"  name="radiotype" id="type2" value="Pamesta" > Pamečiau<br>
                 </form>
 
-                Vieta: <input id="address" type="textbox" placeholder="Įveskite adresą"><br>
-                Komentaras: <input id="comment" type="textbox" placeholder="Aprašykite daiktą"> <br>
-                El. paštas:  <input id="email" type="textbox" placeholder="įveskite el-paštą" > <br>
-                Telefonas: <input id="number" type="textbox" placeholder="įveskite telefono numerį" > <br>
+                Vieta: <br><input id="address" class="buttonn" type="textbox" placeholder="Įveskite adresą">
+                Komentaras: <br><input id="comment" class="buttonn" type="textbox" placeholder="Aprašykite daiktą">
+                El-paštas:  <br><input id="email" class="buttonn" type="textbox" placeholder="įveskite el-paštą" >
+                Telefonas: <br><input id="number" class="buttonn" type="textbox" placeholder="įveskite telefono numerį" ><br>
+                <br><br>
                 <button class="button" id="myBtnn" style="vertical-align:middle" onclick="codeAddress()" ><span>Pažymėti žemėlapyje </span></button>
                 <p><span><input class="button" type="button" style="vertical-align:middle" id="closeBtn" value="Saugoti" ></span></p>
 
@@ -631,6 +696,7 @@
     </div>
 
 </div>
+
 
 
 <div id="myModal1" class="modal">
@@ -653,15 +719,17 @@
 
 </div>
 
+
 <footer>
     &copy; Lost & Found 2016 All rights reserved.
 </footer>
-
 
 <script>
     // Get the modal
     var modal = document.getElementById('myModal');
 
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
 
     // Get the button that closes the modal
@@ -671,6 +739,11 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        initialize();
+        modal.style.display = "block";
+    }
 
     // When the user clicks the close button, close the modal
     btn2.onclick = function() {
@@ -695,33 +768,33 @@
 
     var modal1 = document.getElementById('myModal1');
 
-    // Get the button that opens the modal
-    var btn22 = document.getElementById("myBtn22");
+        // Get the button that opens the modal
+        var btn22 = document.getElementById("myBtn22");
 
 
 
 
-    // Get the <span> element that closes the modal
-    var span1 = document.getElementsByClassName("close1")[0];
+        // Get the <span> element that closes the modal
+        var span1 = document.getElementsByClassName("close1")[0];
 
-    // When the user clicks the button, open the modal
-    btn22.onclick = function() {
+        // When the user clicks the button, open the modal
+        btn22.onclick = function() {
 
-        modal1.style.display = "block";
-    }
+            modal1.style.display = "block";
+        }
 
 
-    // When the user clicks on <span> (x), close the modal
-    span1.onclick = function() {
-        modal1.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal1) {
+        // When the user clicks on <span> (x), close the modal
+        span1.onclick = function() {
             modal1.style.display = "none";
         }
-    }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal1) {
+                modal1.style.display = "none";
+            }
+        }
 
 
 </script>

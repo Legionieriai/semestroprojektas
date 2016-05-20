@@ -56,16 +56,16 @@
         }
 
         body{
-            background: lightslategrey;
+            background-image: url("http://artrebels.com/sites/default/files/things4.jpg");
             font-family: Arial;
             font-size: 0.8em;
         }
 
         #conteiner, footer{
             background: #fff;
-            width: 920px;
+            width: 950px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px 2px 5px 20px;
         }
 
         header{
@@ -142,13 +142,26 @@
         .clear{
             clear: both;
         }
+        .h2 {
+            font-family: Copperplate, Copperplate Gothic Light, fantasy;
+            font-size: 24px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 700;
+            line-height: 5px;
+
+        }
     </style>
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script>
+
+
+
         $(document).ready(function() {
             $('#log').click(function() {
+
 
                 var username = document.getElementById('username').value;
                 var password = document.getElementById('password').value;
@@ -160,8 +173,26 @@
                         password: password
                     },
                     success: function(data) {
-                        if
-                        alert(data);
+                        if(data[0]== "{") {
+                            var obj = JSON.parse(data);
+
+                            if (obj.active == 1) {
+                                //alert("prisijungei");
+                                //str.link("index.php");
+                                window.location.href = 'main';
+                                //document.getElementById("demo").innerHTML = result;
+
+
+
+
+
+                            }
+                        }else {
+                            //alert(data);
+                            $('#result').html(data)
+                        }
+
+
                     },
                     error: function() {
                         alert('error:_database');
@@ -174,46 +205,48 @@
 
 
 </head>
-<body>
+<body bgcolor="#E6E6FA">
 <header>
-    <h1 class="logo">Lost And Found</h1>
+    <h2 class="h2">Lost & Found : Rasti - Pamesti daiktai</h2>
     <nav>
         <u1>
-            <li><a href="index.php">Home</a></li>
+            <li><a href=""><font color="white"><h3>< Gryžti</h3></font></a></li>
         </u1>
     </nav>
     <div class="clear"></div>
 </header>
 <div id="conteiner">
-    <aside>
+
 
 
 
     <div class="widget">
-        <h2> Login/Register </h2>
+        <h2> Lost & Found </h2>
         <div class="inner">
+            <h3><div id="result" style="color:#DF0101"></div></h3>
             <form >
                 <ul id="loginh">
                     <li>
-                        Username:<br>
+                        Prisijungimo vardas:<br>
                         <input type="textbox" id="username">
                     </li>
                     <li>
-                        Password:<br>
-                        <input type="textbox" id="password">
+                        Slaptažodis:<br>
+                        <input type="password" id="password">
                     </li>
                     <li>
 
 
                         <!--<a href="{ ('loginn') }}">login</a> -->
-                        <input type="button" id="log" value="login" >
+                        <input type="button" id="log" value="Prisijungti" >
 
 
                         <!--<input href="" type="submit" value="Login"> <input href="loginn" type="submit" value="Login">-->
 
                     </li>
                     <li>
-                        <a href="register.php">Register</a>
+                        Neturite paskyros? Registruokitės: <br>
+                        <a href="register">Registruotis</a>
                         <div id="result"></div>
                     </li>
                 </ul>
@@ -222,12 +255,9 @@
 
 
     </div>
-    </aside>
-    <h1>Register</h1>
-    <p> Registration page </p>
 </div>
 <footer>
-    &copy; phpacademy.org 2011 All rights reserved.
+    &copy; Lost & Found 2016 All rights reserved.
 </footer>
 </body>
 </html>
