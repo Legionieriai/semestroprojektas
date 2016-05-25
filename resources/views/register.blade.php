@@ -203,7 +203,7 @@
     <h2 class="h2">Lost & Found : Rasti - Pamesti daiktai</h2>
     <nav>
         <u1>
-            <li><a href=""><font color="white"><h3>< Gryžti</h3></font></a></li>
+            <li><a href=main><font color="white"><h3>< Gryžti</h3></font></a></li>
         </u1>
     </nav>
     <div class="clear"></div>

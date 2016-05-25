@@ -179,7 +179,8 @@
                             if (obj.active == 1) {
                                 //alert("prisijungei");
                                 //str.link("index.php");
-                                window.location.href = 'main';
+                                var login = true;
+                                window.location.href = 'main?login=true';
                                 //document.getElementById("demo").innerHTML = result;
 
 
@@ -210,7 +211,7 @@
     <h2 class="h2">Lost & Found : Rasti - Pamesti daiktai</h2>
     <nav>
         <u1>
-            <li><a href=""><font color="white"><h3>< Gryžti</h3></font></a></li>
+            <li><a href='main'><font color="white"><h3>< Gryžti</h3></font></a></li>
         </u1>
     </nav>
     <div class="clear"></div>

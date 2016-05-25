@@ -115,8 +115,8 @@
             for (var i = 0; i < obj.length; i++) {
 
                 infowindowtext =
-                        '<h3>' + obj[i].type + '</h3>' +
-                        '<div class=""><img align="left" width="90px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png">' +
+                        '<h3>' + obj[i].type + '</h3>' +    // src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Camera-icon.svg/2000px-Camera-icon.svg.png"
+                        '<div class=""><img align="left" width="90px"  src="C:/Users/Computer/Desktop/project1/images/nernuotr.png">' +
                         '<b>Vieta </b>:' + obj[i].address + '<br>' +
                         '<b>Aprašymas </b>: ' + obj[i].comment + ' <br>' +
                         '<b>El-paštas </b>:' + obj[i].email + ' <br>' +
@@ -208,7 +208,13 @@
         }
         function goout() {
 
-            window.location.href = '/';
+            var login = false;
+            window.location.href = 'main';
+
+        }
+        function gologin() {
+
+            window.location.href = 'signin';
 
         }
 
@@ -411,7 +417,49 @@
 
 
 
-
+//        $(document).ready(function() {
+//
+//
+//
+//                var username = document.getElementById('username').value;
+//                var password = document.getElementById('password').value;
+//                $.ajax({
+//                    url: 'login',
+//                    type: 'GET',
+//                    data: {
+//                        username: username,
+//                        password: password
+//                    },
+//                    success: function(data) {
+//                        if(data[0]== "{") {
+//                            var obj = JSON.parse(data);
+//
+//                            if (obj.active == 1) {
+//                                //alert("prisijungei");
+//                                //str.link("index.php");
+//                                var login = true;
+//                                window.location.href = 'main?login';
+//                                //document.getElementById("demo").innerHTML = result;
+//
+//
+//
+//
+//
+//                            }
+//                        }else {
+//                            //alert(data);
+//                            $('#result').html(data)
+//                        }
+//
+//
+//                    },
+//                    error: function() {
+//                        alert('error:_database');
+//                    }
+//
+//                });
+//
+//        });
 
 
 
@@ -503,6 +551,19 @@
             display: inline-block;
             font-size: 16px;
             width: 250px;
+        }
+        .button2 {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            width: 250px;
+            position: absolute;
+            right: 0px;
         }
 
         .button {
@@ -675,19 +736,25 @@
 
     <h2 class="h2"><b>Lost & Found : Rasti - pamesti daiktai</b></h2>
 
-
 <!-- Trigger/Open The Modal -->
-
 <button id="myBtn11" class="button1" onclick="gohome()"  src="">Pagrindinis</button>
+<button id="myBtn22" class="button1" src="" >Apie projektą</button>
+<?php
+if(isset($_GET['login'])) { //You have to set that somewhere else just like $logged
+?>
 <button id="myBtn" class="button1"  onclick="initialize()">Pridėti pamestą daiktą</button>
-<button id="myBtn22" class="button1"  src="">Apie projektą</button>
 <div class="dropdown">
     <button class="dropbtn">Vartotojas</button>
     <div class="dropdown-content">
         <a onclick="goout()"><b>Atsijungti</b></a>
     </div>
 </div>
-
+<?php } else { ?>
+<button id="myBtn12" class="button1"  onclick="gologin()">Pridėti pamestą daiktą</button>
+<button id="myBtn111" class="button2" onclick="gologin()"  src="">Prisijungti</button>
+<?php
+}
+?>
 
 <br>
 
@@ -761,8 +828,6 @@
     // Get the modal
     var modal = document.getElementById('myModal');
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
 
 
     // Get the button that closes the modal
@@ -772,11 +837,6 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
-    btn.onclick = function() {
-        initialize();
-        modal.style.display = "block";
-    }
 
     // When the user clicks the close button, close the modal
     btn2.onclick = function() {
@@ -801,33 +861,33 @@
 
     var modal1 = document.getElementById('myModal1');
 
-        // Get the button that opens the modal
-        var btn22 = document.getElementById("myBtn22");
+    // Get the button that opens the modal
+    var btn22 = document.getElementById("myBtn22");
 
 
 
 
-        // Get the <span> element that closes the modal
-        var span1 = document.getElementsByClassName("close1")[0];
+    // Get the <span> element that closes the modal
+    var span1 = document.getElementsByClassName("close1")[0];
 
-        // When the user clicks the button, open the modal
-        btn22.onclick = function() {
+    // When the user clicks the button, open the modal
+    btn22.onclick = function() {
 
-            modal1.style.display = "block";
-        }
+        modal1.style.display = "block";
+    }
 
 
-        // When the user clicks on <span> (x), close the modal
-        span1.onclick = function() {
+    // When the user clicks on <span> (x), close the modal
+    span1.onclick = function() {
+        modal1.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
             modal1.style.display = "none";
         }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal1) {
-                modal1.style.display = "none";
-            }
-        }
+    }
 
 
 </script>
